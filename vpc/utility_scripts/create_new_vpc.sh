@@ -8,15 +8,16 @@ vpc_stack_name="vpc_with_single_ec2_instance"
 
 #validate template
 validate_stack_cmd="aws cloudformation validate-template --template-body $aws_home_dir/vpc/templates/vpc_single_instance_into_subnet.template"
-
-deploy_stack_cmd="aws cloudformation deploy --stack-name $vpc_stack_name --template-file $aws_home_dir/vpc/templates/vpc_single_instance_into_subnet.template"
 exec $validate_stack_cmd
-ret_code=$?
-if [[ $ret_code -ne 0 ]]; then
-    echo "Validation is completed"
-elif
-    echo "validation failed"
-    exit -1    
+
+#deploy_stack_cmd="aws cloudformation deploy --stack-name $vpc_stack_name --template-file $aws_home_dir/vpc/templates/vpc_single_instance_into_subnet.template"
+#exec $validate_stack_cmd
+# ret_code=$?
+# if [[ $ret_code -ne 0 ]]; then
+#     echo "Validation is completed"
+# elif
+#     echo "validation failed"
+#     exit -1    
 
 # execute and deploy stack
 #exec $deploy_stack_cmd
