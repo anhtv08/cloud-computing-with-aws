@@ -7,8 +7,6 @@ source $aws_home_dir/setup_env.sh
 # create vpc using cloud formation.
 # [a-zA-Z][-a-zA-Z]
 vpc_stack_name="vpc-with-single-ec2-instance"
-
-q
 #validate template
 delete_stack_cmd="aws cloudformation delete-stack --stack-name $vpc_stack_name"
 exec $delete_stack_cmd
