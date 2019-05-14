@@ -14,7 +14,7 @@ validate_stack_cmd="aws cloudformation validate-template --template-body $aws_ho
 exec $validate_stack_cmd
 
 deploy_stack_cmd="aws cloudformation deploy --stack-name $vpc_stack_name --template-file $aws_home_dir/vpc/templates/vpc_single_instance_into_subnet.template"
-exec $validate_stack_cmd
+exec $deploy_stack_cmd
 # ret_code=$?
 # if [[ $ret_code -ne 0 ]]; then
 #     echo "Validation is completed"
