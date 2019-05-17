@@ -12,6 +12,13 @@ Resources:
     Properties:
       BucketName: joey-aws-test-provision
       AccessControl: PublicRead
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          -
+            ServerSideEncryptionByDefault:
+              SSEAlgorithm: "AES256"
       Tags:
           -
             Key: "Application"
