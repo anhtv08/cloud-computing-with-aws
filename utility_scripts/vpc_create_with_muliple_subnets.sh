@@ -6,8 +6,8 @@ source $aws_home_dir/setup_env.sh
 
 # create vpc using cloud formation.
 # [a-zA-Z][-a-zA-Z]
-vpc_stack_name="vpc-with-single-ec2-instance-update"
-deploy_stack_cmd="aws cloudformation deploy --stack-name $vpc_stack_name --template-file $aws_home_dir/services/vpc/vpc_single_instance_into_subnet.template"
+vpc_stack_name="vpc-with-multiple-public-private-subnets"
+deploy_stack_cmd="aws cloudformation deploy --stack-name $vpc_stack_name --template-file $aws_home_dir/services/vpc/vpc_with_managed_NAT_And_Private_Subnet.yaml"
 exec $deploy_stack_cmd
 # ret_code=$?
 # if [[ $ret_code -ne 0 ]]; then

@@ -466,8 +466,13 @@
 
   "Outputs" : {
     "URL" : {
-      "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["WebServerInstance", "PublicIp"] }]]},
-      "Description" : "Newly created application URL"
+      "Description" : "Newly created application URL",
+      "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["WebServerInstance", "PublicIp"] }]]}
+    },
+    "MyVpcId":{
+      "Description": "Vpc-id exported to be used by another stack",
+      "Value":  {"Fn::Sub": "${AWS::StackName}-VpcId" },
+      "Export" : { "Name" : {"Fn::Sub": "${AWS::StackName}-VpcId" }}
     }
   }
 }

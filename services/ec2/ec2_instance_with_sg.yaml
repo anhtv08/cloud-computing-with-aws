@@ -8,6 +8,18 @@ Description: 'AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSam
   EC2 instance. You will be billed for the AWS resources used if you create a stack
   from this template.'
 Parameters:
+  pubSubnetStack:
+    Description: public stack name for importing
+    Type: String
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-PublicSubnet0
+  privateSubnetStack:
+    Description: private stack name for importing
+    Type: String
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-PrivateSubnet0
+  securityGroupName:
+    Description: default security group name
+    Type: String
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-DefaultSecurityGroup
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: AWS::EC2::KeyPair::KeyName
@@ -49,22 +61,18 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: !Ref 'InstanceType'
-      SecurityGroups: [!Ref 'InstanceSecurityGroup']
       KeyName: !Ref 'KeyName'
       ImageId: !Ref 'LatestAmiId'
-      SubnetId: "subnet-0d478fa02a8317443"
-      VpcId: "vpc-0972f172849c7c125"
-      #SubnetId: !FindInMap [ myConfigMap, vpc, public_sub_net]
-      #!FindInMap [ RegionMap, !Ref 'AWS::Region', AMI ]
-  InstanceSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Enable SSH access via port 22
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: !Ref 'SSHLocation'
+      NetworkInterfaces :
+        -
+          GroupSet:
+            -
+              Fn::ImportValue: !Ref 'securityGroupName'
+          AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          DeleteOnTermination: true
+          SubnetId:
+            Fn::ImportValue: !Ref 'pubSubnetStack'
 Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
