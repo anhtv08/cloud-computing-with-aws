@@ -467,7 +467,7 @@
           !Ref 's3ServiceName'
         SubnetIds: 
           - 
-            !Ref 'PrivateSubnet0'
+            !Ref 'PrivateSubnet1'
         VpcId: 
           !Ref 'VPC'
 
