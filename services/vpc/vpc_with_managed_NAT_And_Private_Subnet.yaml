@@ -7,6 +7,11 @@
       Description: The name of the VPC being created.
       Type: String
       Default: "VPC Public and Private with NAT"
+    s3ServiceName:
+      Description: The name of the VPC being created.
+      Type: String
+      Default: "com.amazonaws.ap-southeast-1.s3"
+        
 
   Mappings:
     SubnetConfig:
@@ -80,7 +85,7 @@
           -
             Key: "Name"
             Value: !Ref 'VPCName'
-
+            
     PublicSubnet0:
       Type: "AWS::EC2::Subnet"
       Properties:
@@ -297,8 +302,6 @@
               - - !Ref "VPCName"
                 - '-public-nacl'
 
-
-
     InboundHTTPPublicNetworkAclEntry:
       Type: "AWS::EC2::NetworkAclEntry"
       Properties:
@@ -353,25 +356,25 @@
       Properties:
         Domain: "vpc"
 
-    NATGateway0:
-      Type: "AWS::EC2::NatGateway"
-      Properties:
-        AllocationId:
-          Fn::GetAtt:
-            - "ElasticIP0"
-            - "AllocationId"
-        SubnetId:
-          Ref: "PublicSubnet0"
+    # NATGateway0:
+    #   Type: "AWS::EC2::NatGateway"
+    #   Properties:
+    #     AllocationId:
+    #       Fn::GetAtt:
+    #         - "ElasticIP0"
+    #         - "AllocationId"
+    #     SubnetId:
+    #       Ref: "PublicSubnet0"
 
-    NATGateway1:
-      Type: "AWS::EC2::NatGateway"
-      Properties:
-        AllocationId:
-          Fn::GetAtt:
-            - "ElasticIP1"
-            - "AllocationId"
-        SubnetId:
-          Ref: "PublicSubnet1"
+    # NATGateway1:
+    #   Type: "AWS::EC2::NatGateway"
+    #   Properties:
+    #     AllocationId:
+    #       Fn::GetAtt:
+    #         - "ElasticIP1"
+    #         - "AllocationId"
+    #     SubnetId:
+    #       Ref: "PublicSubnet1"
 
     PrivateRouteTable0:
       Type: "AWS::EC2::RouteTable"
@@ -405,8 +408,8 @@
         RouteTableId:
           Ref: "PrivateRouteTable0"
         DestinationCidrBlock: "0.0.0.0/0"
-        NatGatewayId:
-          Ref: "NATGateway0"
+        # NatGatewayId:
+        #   Ref: "NATGateway0"
 
     PrivateRouteToInternet1:
       Type: "AWS::EC2::Route"
@@ -414,8 +417,8 @@
         RouteTableId:
           Ref: "PrivateRouteTable1"
         DestinationCidrBlock: "0.0.0.0/0"
-        NatGatewayId:
-          Ref: "NATGateway1"
+        # NatGatewayId:
+        #   Ref: "NATGateway1"
 
     PrivateSubnetRouteTableAssociation0:
       Type: "AWS::EC2::SubnetRouteTableAssociation"
@@ -432,6 +435,41 @@
           Ref: "PrivateSubnet1"
         RouteTableId:
           Ref: "PrivateRouteTable1"
+
+    privateEndpointToAwsService0:
+      Type: AWS::EC2::VPCEndpoint
+      Properties: 
+        PrivateDnsEnabled: true
+        RouteTableIds: 
+          - 
+            !Ref 'PrivateRouteTable0'
+        SecurityGroupIds: 
+          - 
+            !GetAtt VPC.DefaultSecurityGroup
+        ServiceName: 
+          !Ref 's3ServiceName'
+        SubnetIds: 
+          - 
+            !Ref 'PrivateSubnet0'
+        VpcId: 
+          !Ref 'VPC'
+    privateEndpointToAwsService1:
+      Type: AWS::EC2::VPCEndpoint
+      Properties: 
+        PrivateDnsEnabled: true
+        RouteTableIds: 
+          - 
+            !Ref 'PrivateRouteTable1'
+        SecurityGroupIds: 
+          - 
+            !GetAtt VPC.DefaultSecurityGroup
+        ServiceName: 
+          !Ref 's3ServiceName'
+        SubnetIds: 
+          - 
+            !Ref 'PrivateSubnet0'
+        VpcId: 
+          !Ref 'VPC'
 
   Outputs:
 
