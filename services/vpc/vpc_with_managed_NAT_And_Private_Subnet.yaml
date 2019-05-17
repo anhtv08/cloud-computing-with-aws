@@ -440,40 +440,40 @@
         RouteTableId:
           Ref: "PrivateRouteTable1"
 
-    privateEndpointToAwsService0:
-      Type: AWS::EC2::VPCEndpoint
-      Properties: 
-        PrivateDnsEnabled: true
-        RouteTableIds: 
-          - 
-            !Ref 'PrivateRouteTable0'
-        SecurityGroupIds: 
-          - 
-            !GetAtt VPC.DefaultSecurityGroup
-        ServiceName: 
-          !Ref 's3ServiceName'
-        SubnetIds: 
-          - 
-            !Ref 'PrivateSubnet0'
-        VpcId: 
-          !Ref 'VPC'
-    privateEndpointToAwsService1:
-      Type: AWS::EC2::VPCEndpoint
-      Properties: 
-        PrivateDnsEnabled: true
-        RouteTableIds: 
-          - 
-            !Ref 'PrivateRouteTable1'
-        SecurityGroupIds: 
-          - 
-            !GetAtt VPC.DefaultSecurityGroup
-        ServiceName: 
-          !Ref 's3ServiceName'
-        SubnetIds: 
-          - 
-            !Ref 'PrivateSubnet'
-        VpcId: 
-          !Ref 'VPC'
+    # privateEndpointToAwsService0:
+    #   Type: AWS::EC2::VPCEndpoint
+    #   Properties: 
+    #     PrivateDnsEnabled: true
+    #     RouteTableIds: 
+    #       - 
+    #         !Ref 'PrivateRouteTable0'
+    #     SecurityGroupIds: 
+    #       - 
+    #         !GetAtt VPC.DefaultSecurityGroup
+    #     ServiceName: 
+    #       !Ref 's3ServiceName'
+    #     SubnetIds: 
+    #       - 
+    #         !Ref 'PrivateSubnet0'
+    #     VpcId: 
+    #       !Ref 'VPC'
+    # privateEndpointToAwsService1:
+    #   Type: AWS::EC2::VPCEndpoint
+    #   Properties: 
+    #     PrivateDnsEnabled: true
+    #     RouteTableIds: 
+    #       - 
+    #         !Ref 'PrivateRouteTable1'
+    #     SecurityGroupIds: 
+    #       - 
+    #         !GetAtt VPC.DefaultSecurityGroup
+    #     ServiceName: 
+    #       !Ref 's3ServiceName'
+    #     SubnetIds: 
+    #       - 
+    #         !Ref 'PrivateSubnet1'
+    #     VpcId: 
+    #       !Ref 'VPC'
 
   Outputs:
 
