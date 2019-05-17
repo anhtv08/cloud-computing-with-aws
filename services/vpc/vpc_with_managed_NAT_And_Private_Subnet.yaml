@@ -356,15 +356,15 @@
       Properties:
         Domain: "vpc"
 
-    # NATGateway0:
-    #   Type: "AWS::EC2::NatGateway"
-    #   Properties:
-    #     AllocationId:
-    #       Fn::GetAtt:
-    #         - "ElasticIP0"
-    #         - "AllocationId"
-    #     SubnetId:
-    #       Ref: "PublicSubnet0"
+    NATGateway0:
+      Type: "AWS::EC2::NatGateway"
+      Properties:
+        AllocationId:
+          Fn::GetAtt:
+            - "ElasticIP0"
+            - "AllocationId"
+        SubnetId:
+          Ref: "PublicSubnet0"
 
     # NATGateway1:
     #   Type: "AWS::EC2::NatGateway"
@@ -408,8 +408,10 @@
         RouteTableId:
           Ref: "PrivateRouteTable0"
         DestinationCidrBlock: "0.0.0.0/0"
-        # NatGatewayId:
-        #   Ref: "NATGateway0"
+        # GatewayId:
+        #   Ref: "InternetGateway"
+        NatGatewayId:
+          Ref: "NATGateway0"
 
     PrivateRouteToInternet1:
       Type: "AWS::EC2::Route"
@@ -417,8 +419,10 @@
         RouteTableId:
           Ref: "PrivateRouteTable1"
         DestinationCidrBlock: "0.0.0.0/0"
-        # NatGatewayId:
-        #   Ref: "NATGateway1"
+        # GatewayId:
+        #   Ref: "InternetGateway"
+        NatGatewayId:
+          Ref: "NATGateway0"
 
     PrivateSubnetRouteTableAssociation0:
       Type: "AWS::EC2::SubnetRouteTableAssociation"
@@ -467,7 +471,7 @@
           !Ref 's3ServiceName'
         SubnetIds: 
           - 
-            !Ref 'PrivateSubnet1'
+            !Ref 'PrivateSubnet'
         VpcId: 
           !Ref 'VPC'
 
