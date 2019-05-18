@@ -2,12 +2,13 @@
 
 # initial setup
 aws_working_dir=/Users/anhtrang/working/cloud-computing/aws
-file_name="test_data_$(date +%s%S).txt"
+ts=$(date +%s%S)
+file_name="test_data_$ts.txt"
 bucket_name="joey-aws-test-provision"
 region_name="ap-southeast-1"
 
 # generate text
-echo "This is pre-signed object url generating by cli." > "$aws_working_dir/data/$file_name"
+echo "This is pre-signed object url generating by cli at $ts" > "$aws_working_dir/data/$file_name"
 
 eval "aws s3api head-bucket --bucket $bucket_name 2>/dev/null"
 ret_code=$?
