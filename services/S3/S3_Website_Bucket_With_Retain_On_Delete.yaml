@@ -14,11 +14,19 @@ Resources:
       AccessControl: PublicRead
       VersioningConfiguration:
         Status: Enabled
-      BucketEncryption:
-        ServerSideEncryptionConfiguration:
+      LifecycleConfiguration:
+        Rules:
           -
-            ServerSideEncryptionByDefault:
-              SSEAlgorithm: "AES256"
+            ExpirationInDays: 1
+            Transitions: 
+              - 
+                StorageClass: "GLACIER"
+                TransitionInDays: 1
+      BucketEncryption:
+      ServerSideEncryptionConfiguration:
+        -
+          ServerSideEncryptionByDefault:
+            SSEAlgorithm: "AES256"
       Tags:
           -
             Key: "Application"
