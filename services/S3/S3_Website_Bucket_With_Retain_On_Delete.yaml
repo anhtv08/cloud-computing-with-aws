@@ -5,28 +5,29 @@ Description: 'AWS CloudFormation Sample Template S3_Website_Bucket_With_Retain_O
   Sample template showing how to create a publicly accessible S3 bucket configured
   for website access with a deletion policy of retain on delete. **WARNING** This
   template creates an S3 bucket that will NOT be deleted when the stack is deleted.
-  You will be billed for the AWS resources used if you create a stack from this template.'
+  You will be billed for the AWS resources used if you create a stack from this template.'    
 Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: joey-aws-test-provision
       AccessControl: PublicRead
-      VersioningConfiguration:
-        Status: Enabled
       LifecycleConfiguration:
         Rules:
           -
-            ExpirationInDays: 1
+            ExpirationInDays: 10
+            Status: Enabled
             Transitions: 
               - 
                 StorageClass: "GLACIER"
                 TransitionInDays: 1
+      VersioningConfiguration:
+        Status: Enabled
       BucketEncryption:
-      ServerSideEncryptionConfiguration:
-        -
-          ServerSideEncryptionByDefault:
-            SSEAlgorithm: "AES256"
+        ServerSideEncryptionConfiguration:
+          -
+            ServerSideEncryptionByDefault:
+              SSEAlgorithm: "AES256"
       Tags:
           -
             Key: "Application"

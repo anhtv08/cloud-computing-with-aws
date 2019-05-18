@@ -2,8 +2,8 @@
 
 # initial setup
 aws_working_dir=/Users/anhtrang/working/cloud-computing/aws
-file_name=test_data.txt
-bucket_name="j-aws-s3-bucket-test"
+file_name="test_data_$(date +%s%S).txt"
+bucket_name="joey-aws-test-provision"
 region_name="ap-southeast-1"
 
 # generate text

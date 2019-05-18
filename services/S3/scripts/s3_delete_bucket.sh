@@ -4,7 +4,7 @@
 # allowing ssh access to it.
 # load environment setup scripts
 export aws_home_dir=$HOME/working/cloud-computing/aws
-source $aws_home_dir/setup_env.sh
+source $aws_home_dir/utility_scripts/setup_env.sh
 
 # create vpc using cloud formation.
 # [a-zA-Z][-a-zA-Z]
