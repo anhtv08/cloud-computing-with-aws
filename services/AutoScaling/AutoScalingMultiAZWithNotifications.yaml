@@ -491,6 +491,10 @@ Resources:
     Properties:
       AvailabilityZones: !GetAZs ''
       CrossZone: true
+      Subnets:
+        -
+          Fn::ImportValue: 
+            !Ref 'pubSubnetStack'
       Listeners:
       - LoadBalancerPort: '80'
         InstancePort: '80'

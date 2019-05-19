@@ -402,43 +402,43 @@
               - - !Ref "VPCName"
                 - '-private-route-table-1'
 
-    PrivateRouteToInternet0:
-      Type: "AWS::EC2::Route"
-      Properties:
-        RouteTableId:
-          Ref: "PrivateRouteTable0"
-        DestinationCidrBlock: "0.0.0.0/0"
-        # GatewayId:
-        #   Ref: "InternetGateway"
-        NatGatewayId:
-          Ref: "NATGateway0"
+    # PrivateRouteToInternet0:
+    #   Type: "AWS::EC2::Route"
+    #   Properties:
+    #     RouteTableId:
+    #       Ref: "PrivateRouteTable0"
+    #     DestinationCidrBlock: "0.0.0.0/0"
+    #     # GatewayId:
+    #     #   Ref: "InternetGateway"
+    #     NatGatewayId:
+    #       Ref: "NATGateway0"
 
-    PrivateRouteToInternet1:
-      Type: "AWS::EC2::Route"
-      Properties:
-        RouteTableId:
-          Ref: "PrivateRouteTable1"
-        DestinationCidrBlock: "0.0.0.0/0"
-        # GatewayId:
-        #   Ref: "InternetGateway"
-        NatGatewayId:
-          Ref: "NATGateway0"
+    # PrivateRouteToInternet1:
+    #   Type: "AWS::EC2::Route"
+    #   Properties:
+    #     RouteTableId:
+    #       Ref: "PrivateRouteTable1"
+    #     DestinationCidrBlock: "0.0.0.0/0"
+    #     # GatewayId:
+    #     #   Ref: "InternetGateway"
+    #     NatGatewayId:
+    #       Ref: "NATGateway0"
 
-    PrivateSubnetRouteTableAssociation0:
-      Type: "AWS::EC2::SubnetRouteTableAssociation"
-      Properties:
-        SubnetId:
-          Ref: "PrivateSubnet0"
-        RouteTableId:
-          Ref: "PrivateRouteTable0"
+    # PrivateSubnetRouteTableAssociation0:
+    #   Type: "AWS::EC2::SubnetRouteTableAssociation"
+    #   Properties:
+    #     SubnetId:
+    #       Ref: "PrivateSubnet0"
+    #     RouteTableId:
+    #       Ref: "PrivateRouteTable0"
 
-    PrivateSubnetRouteTableAssociation1:
-      Type: "AWS::EC2::SubnetRouteTableAssociation"
-      Properties:
-        SubnetId:
-          Ref: "PrivateSubnet1"
-        RouteTableId:
-          Ref: "PrivateRouteTable1"
+    # PrivateSubnetRouteTableAssociation1:
+    #   Type: "AWS::EC2::SubnetRouteTableAssociation"
+    #   Properties:
+    #     SubnetId:
+    #       Ref: "PrivateSubnet1"
+    #     RouteTableId:
+    #       Ref: "PrivateRouteTable1"
 
     # privateEndpointToAwsService0:
     #   Type: AWS::EC2::VPCEndpoint
