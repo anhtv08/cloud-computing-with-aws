@@ -42,6 +42,10 @@ Parameters:
     Default: 0.0.0.0/0
     AllowedPattern: (\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+  publicSubNet0:
+    Description: public subnet name
+    Type: String
+    Default: subnet-067183fb235c45403
 Mappings:
   Region2Examples:
     us-east-1:
@@ -489,12 +493,10 @@ Resources:
   ElasticLoadBalancer:
     Type: AWS::ElasticLoadBalancing::LoadBalancer
     Properties:
-      AvailabilityZones: !GetAZs ''
       CrossZone: true
       Subnets:
         -
-          Fn::ImportValue: 
-            !Ref 'pubSubnetStack'
+          !Ref 'publicSubNet0'
       Listeners:
       - LoadBalancerPort: '80'
         InstancePort: '80'
