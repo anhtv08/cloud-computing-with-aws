@@ -9,7 +9,7 @@ source $aws_home_dir/utility_scripts/setup_env.sh
 aws rds create-db-instance \
 --db-instance-identifier 'mydbinstance' \
 --engine 'mysql' \
---db-instance-class 'db.t2.small' \
+--db-instance-class 'db.t2.micro' \
 --allocated-storage 5 \
 --master-username 'myusername' \
 --master-user-password 'mypassword' \
