@@ -1,6 +1,6 @@
 # cloud-computing-with-aws
 
-### materials lab somehow inherited from awslab: `https://github.com/awslabs`
+### using the reference from awslab: `https://github.com/awslabs`
 **This is project structure**
 ```
 
