@@ -1,6 +1,6 @@
 # cloud-computing-with-aws
 
-### using the reference from awslab: `https://github.com/awslabs`
+### Using the reference from awslab: `https://github.com/awslabs`
 **This is project structure**
 ```
 
