@@ -11,15 +11,15 @@ Parameters:
   pubSubnetStack:
     Description: public stack name for importing
     Type: String
-    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-PublicSubnet0
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-1-PublicSubnet0
   privateSubnetStack:
     Description: private stack name for importing
     Type: String
-    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-PrivateSubnet0
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-1-PrivateSubnet0
   securityGroupName:
     Description: default security group name
     Type: String
-    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-DefaultSecurityGroup
+    Default: ap-southeast-1-vpc-with-multiple-public-private-subnets-1-DefaultSecurityGroup
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: AWS::EC2::KeyPair::KeyName
