@@ -1,5 +1,5 @@
 #!/bin/bash
-aws_working_dir=/Users/anhtrang/working/cloud-computing/aws/services
+aws_working_dir=$HOME/working/cloud-computing/aws/services
 declare -a data=(
     "test1"
     "test2"
