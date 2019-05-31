@@ -10,4 +10,4 @@ aws sns subscribe \
 --topic-arn $topic_endpoint \
 --protocol $email_consume_protocol \
 --notification-endpoint $email_end_point
-# done
+# done 

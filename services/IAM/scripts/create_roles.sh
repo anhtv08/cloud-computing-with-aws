@@ -9,7 +9,10 @@ declare -a list_of_roles=(
 )
 
 declare -a list_of_policies=(
-    '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action": "sts:AssumeRole","Principal" : { "AWS" : "*" }}]}'
+    '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action": "sts:AssumeRole","Principal" : "Service": [
+          "vpc.amazonaws.com",
+          "datapipeline.amazonaws.com"
+        ]}]}'
     '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action": "sts:AssumeRole","Principal" : { "AWS" : "*" }}]}'
     '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action": "sts:AssumeRole","Principal" : { "AWS" : "*" }}]}'
     '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action": "sts:AssumeRole","Principal" : { "AWS" : "*" }}]}'

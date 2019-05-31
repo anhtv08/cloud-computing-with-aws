@@ -9,6 +9,6 @@ declare -a groups_name=(
 )
 
 for group_name in "${groups_name[@]}"; do
-    aws iam  create-group --group-name $group_name
+    aws iam  create-group --group-name $group_nsame
 done
 
