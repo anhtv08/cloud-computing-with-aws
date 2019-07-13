@@ -6,7 +6,7 @@ def lambda_handler(event, context):
         "headers": {
             "Access-Control-Allow-Origin": "*",
         },
-        "body": "First serverless functions"
+        "body": "First serverless function"
     }
 
     return resp

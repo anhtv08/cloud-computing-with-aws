@@ -1,0 +1,6 @@
+README.md
+setup.py
+my_first_python_pgk.egg-info/PKG-INFO
+my_first_python_pgk.egg-info/SOURCES.txt
+my_first_python_pgk.egg-info/dependency_links.txt
+my_first_python_pgk.egg-info/top_level.txt

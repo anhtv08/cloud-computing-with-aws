@@ -20,7 +20,4 @@ exec $deploy_stack_cmd
 #exec $deploy_stack_cmd
 
 #verify the stack deployment
-
-
-
  
