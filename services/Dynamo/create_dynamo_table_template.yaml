@@ -35,14 +35,14 @@ Parameters:
     Type: Number
     Default: '1'
     MinValue: '1'
-    MaxValue: '10'
+    MaxValue: '1'
     ConstraintDescription: must be between 5 and 10000
   WriteCapacityUnits:
     Description: Provisioned write throughput
     Type: Number
     Default: '1'
     MinValue: '1'
-    MaxValue: '10'
+    MaxValue: '1'
     ConstraintDescription: must be between 5 and 10000
 Resources:
   myDynamoDBTable:
